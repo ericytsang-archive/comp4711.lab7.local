@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Jim wants a #8 for eat-in
--->
 
 <!DOCTYPE order SYSTEM 'bonanza.dtd'>
 
-<order type="eatin">
-    <customer>Jim</customer>
+<order id='8' type='eatin'>
+    <customer>Eric Tsang</customer>
+    <note>Nothing important...</note>
     <burger>
-        <patty type="beef"/>
-        <cheeses top="gruyere"/>
-        <topping type="shrooms"/>
-        <sauce type="ketchup"/>
-        <sauce type="mayo"/>
+        <name>Chicken Burger</name>
+        <note>also, nothing important...</note>
+        <patty type="chicken"/>
+        <cheese type="mozzarella"/>
+        <topping type="pickle"/>
+        <topping type="lettuce"/>
+        <topping type="tomato"/>
+        <sauce type="mayonaise"/>
     </burger>
 </order>

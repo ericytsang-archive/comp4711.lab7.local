@@ -64,7 +64,7 @@ $autoload['libraries'] = array('parser');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','directory','text');
+$autoload['helper'] = array('url','directory','array');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('orders','burgers');
 
 
 /* End of file autoload.php */

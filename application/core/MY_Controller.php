@@ -9,7 +9,8 @@
  * @copyright           2010-2013, James L. Parry
  * ------------------------------------------------------------------------
  */
-class Application extends CI_Controller {
+class MY_Controller extends CI_Controller
+{
 
     protected $data = array();      // parameters for view components
     protected $id;                  // identifier for our content
@@ -19,7 +20,8 @@ class Application extends CI_Controller {
      * Establish view parameters & load common helpers
      */
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
         $this->data = array();
         $this->data['title'] = "Barker Bob's Burger Bar";    // our default title
@@ -30,7 +32,8 @@ class Application extends CI_Controller {
     /**
      * Render this page
      */
-    function render() {
+    function render()
+    {
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
         // finally, build the browser page!

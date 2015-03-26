@@ -6,24 +6,28 @@
  *
  * @author jim
  */
-class Menu extends CI_Model {
+class Menu extends CI_Model
+{
 
     protected $xml = null;
     protected $patty_names = array();
     protected $patties = array();
 
     // Constructor
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
-        $this->xml = simplexml_load_file(DATAPATH . 'menu.xml');
+        $this->xml = simplexml_load_file(DATAPATH.'menu.xml');
 
         // build the list of patties - approach 1
-        foreach ($this->xml->patties->patty as $patty) {
+        foreach ($this->xml->patties->patty as $patty)
+        {
             $patty_names[(string) $patty['code']] = (string) $patty;
         }
 
         // build a full list of patties - approach 2
-        foreach ($this->$xml->patties->patty as $patty) {
+        foreach ($this->$xml->patties->patty as $patty)
+        {
             $record = new stdClass();
             $record->code = (string) $patty['code'];
             $record->name = (string) $patty;
@@ -33,12 +37,14 @@ class Menu extends CI_Model {
     }
 
     // retrieve a list of patties, to populate a dropdown, for instance
-    function patties() {
+    function patties()
+    {
         return $this->patty_names;
     }
 
     // retrieve a patty record, perhaps for pricing
-    function getPatty($code) {
+    function getPatty($code)
+    {
         if (isset($this->patties[$code]))
             return $this->patties[$code];
         else

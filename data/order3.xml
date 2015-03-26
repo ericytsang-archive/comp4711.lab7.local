@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE order SYSTEM 'bonanza.dtd'>
+
+<order id='8' type='eatin'>
+    <customer>Master Chief Captain Sergent of Bonanza</customer>
+    <note>git is love, git is life</note>
+    <burger>
+        <name>Master Chief Captain Sergent Burger</name>
+        <cheese type="blue"/>
+        <patty type="beef"/>
+        <cheese type="blue"/>
+        <topping type="pickle"/>
+        <topping type="lettuce"/>
+        <topping type="tomato"/>
+        <topping type="mushroom"/>
+        <sauce type="ketchup"/>
+        <sauce type="mustard"/>
+    </burger>
+    <burger>
+        <name>Master Chief Captain Sergent Burger With Peanut Butter</name>
+        <note>with extra peanut butter</note>
+        <cheese type="blue"/>
+        <patty type="beef"/>
+        <cheese type="blue"/>
+        <topping type="pickle"/>
+        <topping type="lettuce"/>
+        <topping type="tomato"/>
+        <topping type="mushroom"/>
+        <sauce type="ketchup"/>
+        <sauce type="mustard"/>
+        <sauce type="peanutbutter"/>
+    </burger>
+</order>

@@ -7,7 +7,7 @@
  *
  * ------------------------------------------------------------------------
  */
-class Welcome extends Application {
+class Welcome extends MY_Controller {
 
     function __construct()
     {
@@ -21,38 +21,25 @@ class Welcome extends Application {
     function index()
     {
         // get all the order files from the data directory
-        $files = directory_map('./data/');
+        $files = directory_map(DATAPATH);
 
         // filter out all files except for order files
-        $order_files = array();
-        foreach ($files as $key => $file)
-        {
-            $test = '.xml';
-            if(substr_compare($file,$test,strlen($file)-strlen($test),
-                strlen($test)) === 0 && $file !== 'menu.xml')
-            {
-                // prepare the order
-                $order_file = $file;
-                $order_file = substr($order_file,0,strlen($order_file)-4);
-
-                // add the order to array of orders
-                $order_files[] = $order_file;
-            }
-        }
+        $orders = $this->orders->all();
 
         // build a list of orders
-        $orders = array();
-        foreach($order_files as $key => $order_file)
+        $view_orders = array();
+        foreach($orders as $order)
         {
             // build the order
-            $order = new stdclass();
-            $order->order = $order_file;
-            $order->url   = 'welcome/order/'.$order_file;
+            $ordr = new stdclass();
+            $ordr->order    = $order->get_order_name();
+            $ordr->url      = 'welcome/order/'.$order->get_order_name();
+            $ordr->customer = $order->get_customer_name();
 
             // add the order to array of orders
-            $orders[] = $order;
+            $view_orders[] = $ordr;
         }
-        $this->data['orders'] = $orders;
+        $this->data['orders'] = $view_orders;
 
         // Present the list to choose from
         $this->data['pagebody'] = 'homepage';
@@ -65,9 +52,48 @@ class Welcome extends Application {
 
     function order($filename)
     {
-        // Build a receipt for the chosen order
+        // build a receipt for the chosen order
+        $order = $this->orders->get($filename);
 
-        // Present the list to choose from
+        // prepare burgers for the view
+        $order_burgers = $order->get_burgers();
+        $view_burgers = array();
+        foreach($order_burgers as $key => $burger)
+        {
+            // prepare the burger
+            $bgr = new stdclass();
+            $bgr->num      = $key+1;
+            $bgr->patty    = $burger->get_patty();
+            $bgr->cheeses  = $burger->get_cheeses();
+            $bgr->toppings = to_comma_list($burger->get_toppings());
+            $bgr->sauces   = to_comma_list($burger->get_sauces());
+
+            // post processing for burger cheese
+            if($bgr->cheeses[0] !== null)
+                $bgr->cheeses[0] .= ' (bottom)';
+            if($bgr->cheeses[1] !== null)
+                $bgr->cheeses[1] .= ' (top)';
+            $bgr->cheeses = to_comma_list($bgr->cheeses);
+
+            if($bgr->cheeses !== '')
+            {
+                $colon_li_params = array();
+                $colon_li_params['label'] = 'Cheeses';
+                $colon_li_params['text']  = $bgr->cheeses;
+                $bgr->cheeses = $this->parser->parse('colon_li',$colon_li_params,true);
+            }
+
+            // add the burger to list of burgers
+            $view_burgers[] = $bgr;
+        }
+
+        // inject view parameters for justone
+        $this->data['order_name'] = $order->get_order_name();
+        $this->data['customer']   = $order->get_customer_name();
+        $this->data['order_type'] = $order->get_order_type();
+        $this->data['burgers']    = $view_burgers;
+
+        // present the list to choose from
         $this->data['pagebody'] = 'justone';
         $this->render();
     }

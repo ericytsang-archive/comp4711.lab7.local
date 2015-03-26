@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Order #2 will have three cheeseburgers for George, and takeout
--->
 
 <!DOCTYPE order SYSTEM 'bonanza.dtd'>
 
-<order type="takeout">
-    <customer>George</customer>
+<order id='8' type='eatin'>
+    <customer>Misaka Mikoto</customer>
+    <note>onehundredpercenttsundere</note>
     <burger>
+        <name>Super Beef Burger</name>
+        <cheese type="cheddar"/>
         <patty type="beef"/>
-        <cheeses top="american" bottom="swiss"/>
-        <sauce type="ketchup"/>
-    </burger>
-    <burger>
-        <patty type="vege"/>
-        <cheeses top="gouda" bottom="gouda"/>
+        <cheese type="cheddar"/>
+        <topping type="pickle"/>
         <topping type="lettuce"/>
         <topping type="tomato"/>
+        <sauce type="ketchup"/>
+        <sauce type="mustard"/>
     </burger>
     <burger>
-        <patty type="turkey"/>
-        <cheeses bottom="brie"/>
-        <topping type="raw"/>
-        <topping type="salsa"/>
-        <sauce type="fksauce"/>
+        <name>Fantastic Pork Burger</name>
+        <patty type="pork"/>
+        <topping type="lettuce"/>
+        <topping type="tomato"/>
+        <sauce type="ketchup"/>
+        <sauce type="mustard"/>
+    </burger>
+    <burger>
+        <name>Mega Chicken Burger</name>
+        <patty type="chicken"/>
+        <cheese type="mozzarella"/>
+        <topping type="lettuce"/>
+        <topping type="tomato"/>
+        <sauce type="mayonaise"/>
+    </burger>
+    <burger>
+        <name>Extreme Fish Burger</name>
+        <patty type="fish"/>
+        <cheese type="marble"/>
+        <topping type="pickle"/>
+        <topping type="lettuce"/>
+        <sauce type="mayonaise"/>
     </burger>
 </order>
-
