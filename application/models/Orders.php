@@ -12,16 +12,18 @@ class Orders extends CI_Model
      */
     protected $order_name = null;
 
-    // constructor
+    /**
+     * constructor
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
     /**
-     * returns an array of all order names available.
+     * returns an array of all orders at the data path.
      *
-     * @return an array of all order names available.
+     * @return an array of all orders at the data path.
      */
     public function all()
     {
@@ -80,21 +82,47 @@ class Orders extends CI_Model
         return clone $this;
     }
 
+    /**
+     * returns the name of the order; the name of the file that the order XML is
+     *   in.
+     *
+     * @return the name of the order; the name of the file that the order XML is
+     *   in.
+     */
     public function get_order_name()
     {
         return $this->order_name;
     }
 
+    /**
+     * returns the type of order this order is; is it eatin, takeout, or
+     *   delivery.
+     *
+     * @return the type of order this order is; is it eatin, takeout, or
+     *   delivery.
+     */
     public function get_order_type()
     {
         return $this->xml['type'];
     }
 
+    /**
+     * returns the name of the customer that is purchasing this order.
+     *
+     * @return the name of the customer that is purchasing this order.
+     */
     public function get_customer_name()
     {
         return (string) $this->xml->customer[0];
     }
 
+    /**
+     * returns an array of notes which are special customer specified
+     *   instructions.
+     *
+     * @return an array of notes which are special customer specified
+     *   instructions.
+     */
     public function get_notes()
     {
         $notes = array();
@@ -105,6 +133,11 @@ class Orders extends CI_Model
         return $notes;
     }
 
+    /**
+     * returns the list of burgers in this order as an array of burgers.
+     *
+     * @return the list of burgers in this order as an array of burgers.
+     */
     public function get_burgers()
     {
         $burgers = array();
@@ -115,6 +148,11 @@ class Orders extends CI_Model
         return $burgers;
     }
 
+    /**
+     * returns the amount of money needed to buy all the burgers in this order.
+     *
+     * @return the amount of money needed to buy all the burgers in this order.
+     */
     public function get_total()
     {
         $total = 0;

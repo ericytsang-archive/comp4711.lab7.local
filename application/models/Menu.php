@@ -8,17 +8,39 @@
  */
 class Menu extends CI_Model
 {
-
+    /**
+     * the root menu node in menu.xml.
+     */
     protected $xml = null;
+
+    /**
+     * array of patty menu details, indexed by their codes.
+     */
     protected $patties = array();
+
+    /**
+     * array of cheese menu details, indexed by their codes.
+     */
     protected $cheeses = array();
+
+    /**
+     * array of topping menu details, indexed by their codes.
+     */
     protected $toppings = array();
+
+    /**
+     * array of sauce menu details, indexed by their codes.
+     */
     protected $sauces = array();
 
-    // Constructor
+    /**
+     * loads the menu SimpleXMLElement into memory.
+     */
     public function __construct()
     {
         parent::__construct();
+
+        // parse menu.xml
         $this->xml = simplexml_load_file(DATAPATH.'menu.xml');
 
         // build a full list of patties
@@ -62,7 +84,14 @@ class Menu extends CI_Model
         }
     }
 
-    // retrieve a patty record, perhaps for pricing
+    /**
+     * retrieves the menu details of a patty that has corresponds to $code.
+     *
+     * @param  {string} $code code used to indicate which menu item to retrieve.
+     *
+     * @return a standard object that has menu details of a patty that has
+     *   corresponds to $code.
+     */
     public function get_patty($code)
     {
         if (isset($this->patties[$code]))
@@ -71,7 +100,14 @@ class Menu extends CI_Model
             return null;
     }
 
-    // retrieve a patty record, perhaps for pricing
+    /**
+     * retrieves the menu details of a cheese that has corresponds to $code.
+     *
+     * @param  {string} $code code used to indicate which menu item to retrieve.
+     *
+     * @return a standard object that has menu details of a cheese that has
+     *   corresponds to $code.
+     */
     public function get_cheese($code)
     {
         if (isset($this->cheeses[$code]))
@@ -80,7 +116,14 @@ class Menu extends CI_Model
             return null;
     }
 
-    // retrieve a patty record, perhaps for pricing
+    /**
+     * retrieves the menu details of a topping that has corresponds to $code.
+     *
+     * @param  {string} $code code used to indicate which menu item to retrieve.
+     *
+     * @return a standard object that has menu details of a topping that has
+     *   corresponds to $code.
+     */
     public function get_topping($code)
     {
         if (isset($this->toppings[$code]))
@@ -89,7 +132,14 @@ class Menu extends CI_Model
             return null;
     }
 
-    // retrieve a patty record, perhaps for pricing
+    /**
+     * retrieves the menu details of a sauce that has corresponds to $code.
+     *
+     * @param  {string} $code code used to indicate which menu item to retrieve.
+     *
+     * @return a standard object that has menu details of a sauce that has
+     *   corresponds to $code.
+     */
     public function get_sauce($code)
     {
         if (isset($this->sauces[$code]))
@@ -97,5 +147,4 @@ class Menu extends CI_Model
         else
             return null;
     }
-
 }
