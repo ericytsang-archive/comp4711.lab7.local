@@ -67,14 +67,16 @@ class Welcome extends MY_Controller {
             $bgr->cheeses  = $burger->get_cheeses();
             $bgr->toppings = to_comma_list($burger->get_toppings());
             $bgr->sauces   = to_comma_list($burger->get_sauces());
+            $bgr->price    = '$'.number_format($burger->get_total(),2);
 
-            // post processing for burger cheese
+            // post processing for burger cheese..adding '(top)' or '(bottom)'
             if($bgr->cheeses[0] !== null)
                 $bgr->cheeses[0] .= ' (bottom)';
             if($bgr->cheeses[1] !== null)
                 $bgr->cheeses[1] .= ' (top)';
             $bgr->cheeses = to_comma_list($bgr->cheeses);
 
+            // set up cheese row, if there are cheeses to display
             if($bgr->cheeses !== '')
             {
                 $colon_li_params = array();
@@ -92,6 +94,7 @@ class Welcome extends MY_Controller {
         $this->data['customer']   = $order->get_customer_name();
         $this->data['order_type'] = $order->get_order_type();
         $this->data['burgers']    = $view_burgers;
+        $this->data['price']      = '$'.number_format($order->get_total(),2);
 
         // present the list to choose from
         $this->data['pagebody'] = 'justone';

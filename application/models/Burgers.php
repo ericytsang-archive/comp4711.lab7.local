@@ -26,7 +26,9 @@ class Burgers extends CI_Model
 
     public function get_patty()
     {
-        return $this->xml->patty['type'];
+        $patty_code = (string) $this->xml->patty['type'];
+        $patty = $this->menu->get_patty($patty_code);
+        return $patty->name;
     }
 
     public function get_cheeses()
@@ -37,7 +39,9 @@ class Burgers extends CI_Model
         {
             if($child->getName() === 'cheese')
             {
-                $cheeses[$cheese_index] = $child['type'];
+                $cheese_code = (string) $child['type'];
+                $cheese = $this->menu->get_cheese($cheese_code);
+                $cheeses[$cheese_index] = $cheese->name;
             }
             if($child->getName() === 'patty')
             {
@@ -52,7 +56,9 @@ class Burgers extends CI_Model
         $toppings = array();
         foreach($this->xml->topping as $topping)
         {
-            $toppings[] = $topping['type'];
+            $topping_code = (string) $topping['type'];
+            $topping = $this->menu->get_topping($topping_code);
+            $toppings[] = $topping->name;
         }
         return $toppings;
     }
@@ -62,8 +68,43 @@ class Burgers extends CI_Model
         $sauces = array();
         foreach($this->xml->sauce as $sauce)
         {
-            $sauces[] = $sauce['type'];
+            $sauce_code = (string) $sauce['type'];
+            $sauce = $this->menu->get_sauce($sauce_code);
+            $sauces[] = $sauce->name;
         }
         return $sauces;
+    }
+
+    public function get_total()
+    {
+        $total = 0;
+        foreach($this->xml->children() as $child)
+        {
+            if($child->getName() === 'patty')
+            {
+                $code = (string) $child['type'];
+                $menu_item = $this->menu->get_patty($code);
+                $total += $menu_item->price;
+            }
+            if($child->getName() === 'cheese')
+            {
+                $code = (string) $child['type'];
+                $menu_item = $this->menu->get_cheese($code);
+                $total += $menu_item->price;
+            }
+            if($child->getName() === 'topping')
+            {
+                $code = (string) $child['type'];
+                $menu_item = $this->menu->get_topping($code);
+                $total += $menu_item->price;
+            }
+            if($child->getName() === 'sauce')
+            {
+                $code = (string) $child['type'];
+                $menu_item = $this->menu->get_sauce($code);
+                $total += $menu_item->price;
+            }
+        }
+        return $total;
     }
 }

@@ -97,13 +97,11 @@ class Orders extends CI_Model
 
     public function get_notes()
     {
-        $notes;
-
+        $notes = array();
         foreach($this->xml->note as $note)
         {
             $notes[] = (string) $note;
         }
-
         return $notes;
     }
 
@@ -115,5 +113,16 @@ class Orders extends CI_Model
             $burgers[] = $this->burgers->get($xml_burger);
         }
         return $burgers;
+    }
+
+    public function get_total()
+    {
+        $total = 0;
+        $burgers = $this->get_burgers();
+        foreach($burgers as $burger)
+        {
+            $total += $burger->get_total();
+        }
+        return $total;
     }
 }

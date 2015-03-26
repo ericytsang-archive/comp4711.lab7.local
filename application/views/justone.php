@@ -1,14 +1,14 @@
-<div class="row">
+<div class="row" style="width: 300px; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 30px; font-family: 'Monospace'; border: 1px solid #000; padding: 10px; box-shadow: 5px 5px 23px #888888; ">
     {order_name} for {customer} ({order_type})<br/>
     {burgers}
     <br/>
-    *Burger #{num}*<br/>
-    Base: {patty} burger<br/>
+    <u><b>*Burger #{num}*</b></u><br/>
+    <b>Base:</b> {patty}<br/>
     {cheeses}
-    Toppings: {toppings}<br/>
-    Sauces: {sauces}<br/>
-    Burger Total: {price}<br/>
+    <b>Toppings:</b> {toppings}<br/>
+    <b>Sauces:</b> {sauces}<br/>
+    <b>Burger Total:</b> {price}<br/>
     {/burgers}
     <br/>
-    ORDER TOTAL: {price}<br/>
+    <b>ORDER TOTAL: {price}</b><br/>
 </div>
