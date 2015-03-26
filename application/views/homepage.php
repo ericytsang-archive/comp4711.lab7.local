@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="width: 500px; ">
     <p>Barker Bob's Burger Bar - Orders</p>
     <ol>
         {orders}
