@@ -4,46 +4,32 @@ Menu control tables for Barker Bob's ...
 -->
 <menu>
     <patties>
-        <patty code="beef" price="4.29">beef burger</patty>
-        <patty code="pork" price="4.19">pork burger</patty>
-        <patty code="turkey" price="6.69">turkey burger</patty>
-        <patty code="bison" price="9.19">bison burger</patty>
-        <patty code="vege" price="6.49">vegetarian burger</patty>
+        <patty code="beef" price="1.00">Beef Burger</patty>
+        <patty code="pork" price="2.00">Pork Burger</patty>
+        <patty code="chicken" price="3.00">Chicken Burger</patty>
+        <patty code="fish" price="4.00">Fish Burger</patty>
     </patties>
- 
+
     <cheeses>
-        <cheese code="american" price=".59">american</cheese>
-        <cheese code="swiss" price=".59">swiss</cheese>
-        <cheese code="jack" price=".59">pepper jack</cheese>
-        <cheese code="blue" price=".99">blue</cheese>
-        <cheese code="gruyere" price=".99">gruyere</cheese>
-        <cheese code="gouda" price=".99">smoked gouda</cheese>
-        <cheese code="aged" price="1.19">aged cheddar</cheese>
-        <cheese code="goat" price="1.19">napa valley goat</cheese>
-        <cheese code="brie" price="1.19">imported brie</cheese>
+        <cheese code="blue" price="1.25">Blue Cheese</cheese>
+        <cheese code="cheddar" price="2.25">Cheddar Cheese</cheese>
+        <cheese code="mozzarella" price="3.25">Mozzarella Cheese</cheese>
+        <cheese code="marble" price="4.25">Marble Cheese</cheese>
     </cheeses>
 
     <toppings>
-        <topping code="lettuce" price="0">lettuce</topping>
-        <topping code="tomato" price="0">tomato</topping>
-        <topping code="raw" price="0">raw onion</topping>
-        <topping code="dill" price="0">dill pickles</topping>
-        <topping code="roasted" price=".59">roasted onions</topping>
-        <topping code="shrooms" price=".59">seasonal mushrooms</topping>
-        <topping code="salsa" price=".59">tomato/lime salsa</topping>
-        <topping code="bacon" price=".99">thick-cut bacon</topping>
-        <topping code="chilies" price=".99">roasted green chilies</topping>
-        <topping code="fkchili" price=".99">FK chili</topping>
-        <topping code="avocado" price="1.19">fresh avocado</topping>
-        <topping code="egg" price="1.19">fried egg</topping>
-        <topping code="porkbelly" price="1.19">house-cured pork belly</topping>
+        <topping code="pickle" price="0.14">Pickles</topping>
+        <topping code="lettuce" price="0.16">Lettuces</topping>
+        <topping code="tomato" price="0.12">Tomatoes</topping>
+        <topping code="mushroom" price="0.10">Mushrooms</topping>
     </toppings>
 
     <sauces>
-        <sauce code="ketchup">heinz ketchup</sauce>
-        <sauce code="mustard">ball park mustard</sauce>
-        <sauce code="mayo">hellmans mayo</sauce>
-        <sauce code="fksauce">FK burger sauce</sauce>
+        <sauce code="ketchup" price="0.05">Ketchup</sauce>
+        <sauce code="mustard" price="0.02">Mustard</sauce>
+        <sauce code="relish" price="0.03">Relish</sauce>
+        <sauce code="mayonaise" price="0.07">Mayonaise</sauce>
+        <sauce code="peanutbutter" price="0.09">Peanut Butter</sauce>
     </sauces>
 
 </menu>
